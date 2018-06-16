@@ -3,11 +3,11 @@
     <div class="wrapper">
       <div class="avatar">
       </div>
-      <div class="btn" @click="show">
+      <div class="btn" @click="toggle">
         登录/注册
       </div>
     </div>
-    <modal v-if="condition"></modal>
+    <modal v-if="condition" @closeModal='toggle'></modal>
   </div>
 </template>
 
@@ -22,8 +22,8 @@ export default {
     };
   },
   methods: {
-    show() {
-      this.condition = true;
+    toggle() {
+      this.condition = !this.condition;
     }
   }
 };
