@@ -56,6 +56,7 @@ export default {
   background-image: url("../assets/newperson.png");
 }
 .btn {
+  cursor: pointer;
   width: 200px;
   height: 50px;
   border-radius: 5px;

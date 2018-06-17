@@ -1,21 +1,23 @@
 <template>
-  <div class="modal-backdrop" @click.self="closeModal">
-    <div class="modal">
-      <slot name="header">
-        <h2 class="title">云笔记</h2>
-        <p class="slogen">记录点滴瞬间</p>
-      </slot>
-      <!-- <div class="modal-header"> -->
-      <div class="modal-close" @click='closeModal'>
-        <img :src="img" alt="" class="img">
+  <transition name="modal-fade">
+    <div class="modal-backdrop" @click.self="closeModal">
+      <div class="modal">
+        <slot name="header">
+          <h2 class="title">云笔记</h2>
+          <p class="slogen">记录点滴瞬间</p>
+        </slot>
+        <!-- <div class="modal-header"> -->
+        <div class="modal-close" @click='closeModal'>
+          <img :src="img" alt="" class="img">
+        </div>
+        <!-- </div> -->
+        <keep-alive>
+          <component :is="componentName" @switchComponent='changeComponent'>
+          </component>
+        </keep-alive>
       </div>
-      <!-- </div> -->
-      <keep-alive>
-        <component :is="componentName" @switchComponent='changeComponent'>
-        </component>
-      </keep-alive>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -84,5 +86,13 @@ export default {
 .img {
   width: 24px;
   height: 24px;
+}
+.modal-fade-enter,
+.modal-fade-leave-active{
+  opacity: 0;
+}
+.modal-fade-enter-active,
+.modal-fade-leave-active{
+  transition: opacity .5s ease
 }
 </style>
