@@ -12,6 +12,17 @@
 </template>
 
 <script>
+import request from "@/utils/request";
+import axios from "axios";
+const instance = axios.create({
+  baseURL:'http://xxx.com'
+})
+request('/auth/login','post',{
+  username:'hunger',
+  password:'123456'
+})
+
+
 import Modal from "./Modal";
 export default {
   name: "Init",
@@ -43,7 +54,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.wrapper {
+#init .wrapper {
   width: 200px;
   display: flex;
   justify-content: center;

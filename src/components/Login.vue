@@ -7,7 +7,7 @@
       <div class="wrapper">
         <input type="password" name="" id="" v-model="password" placeholder="密码" class="ipt">
       </div>
-      <div class="btn">
+      <div class="btn" @click="login">
         登录
       </div>
     </div>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import request from "../utils/request.js"
 export default {
   name: "Login",
   data() {
@@ -30,6 +31,12 @@ export default {
   methods: {
     switchComponent() {
       this.$emit("switchComponent", "Register");
+    },
+    login(){
+      request('/auth/login','post',{
+        username:this.account,
+        password:this.password
+      })
     }
   }
 };
